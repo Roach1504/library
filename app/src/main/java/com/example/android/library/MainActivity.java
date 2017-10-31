@@ -1,5 +1,6 @@
 package com.example.android.library;
 
+import android.app.FragmentManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +9,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.android.library.ui.chat.ChatFragment;
+import com.example.android.library.ui.chat.SendFragment;
 import com.example.android.library.ui.news.NewsFragment;
 
 public class MainActivity extends AppCompatActivity {
@@ -17,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         NewsFragment youFragment = new NewsFragment();
-        android.app.FragmentManager fragmentManager = getFragmentManager();
+        final android.app.FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction()          // получаем экземпляр FragmentTransaction
                 .replace(R.id.content, youFragment)
                 .addToBackStack("myStack")
@@ -26,11 +29,12 @@ public class MainActivity extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                android.app.FragmentManager fragmentManager = getFragmentManager();
                 switch (item.getItemId()) {
                     case R.id.navigation_home: {
                         Log.e("menu", "home");
                         NewsFragment youFragment = new NewsFragment();
-                        android.app.FragmentManager fragmentManager = getFragmentManager();
+
                         fragmentManager.beginTransaction()          // получаем экземпляр FragmentTransaction
                                 .replace(R.id.content, youFragment)
                                 .addToBackStack("myStack")
@@ -39,6 +43,12 @@ public class MainActivity extends AppCompatActivity {
                         return true;
                     }
                     case R.id.navigation_chat: {
+                        SendFragment sendFragment = new SendFragment();
+
+                        fragmentManager.beginTransaction()
+                                .replace(R.id.content, sendFragment)
+                                .addToBackStack("myStack")
+                                .commit();
                         Log.e("menu", "dashboard");
                         // TODO: 25.10.2017 replase frame on message fragment
                         return true;
@@ -50,6 +60,8 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
                 return false;
+
+
             }
         });
     }
