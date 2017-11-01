@@ -12,6 +12,8 @@ import android.view.MenuItem;
 import com.example.android.library.ui.chat.ChatFragment;
 import com.example.android.library.ui.chat.SendFragment;
 import com.example.android.library.ui.news.NewsFragment;
+import com.example.android.library.ui.reference.ReferenceFragment;
+import com.example.android.library.ui.settings.SettingsFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -71,14 +73,25 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override public boolean onOptionsItemSelected(MenuItem item) {
+        android.app.FragmentManager fragmentManager = getFragmentManager();
         switch (item.getItemId()){
             case R.id.menu_setting:{
                 Log.e("menu", "1");
+                SettingsFragment settingsFragment = new SettingsFragment();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.content, settingsFragment)
+                        .addToBackStack("myStack")
+                        .commit();
                 // TODO: 25.10.2017 replase frame on setting fragment
                 break;
             }
             case R.id.menu_reference:{
                 Log.e("menu", "2");
+                ReferenceFragment referenceFragment = new ReferenceFragment();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.content, referenceFragment)
+                        .addToBackStack("myStack")
+                        .commit();
                 // TODO: 25.10.2017 replase frame on reference fragment
                 break;
             }
