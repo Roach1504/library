@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bagr"
+
     >
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:src="@drawable/logo_orange" />
 
     <EditText
         android:id="@+id/editText"
@@ -12,14 +18,12 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="24dp"
-        android:layout_marginRight="32dp"
         android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginTop="24dp"
         android:ems="10"
         android:hint="Nickname"
-        android:textColor="@color/white"
-        android:inputType="textPersonName"
-        />
+        android:inputType="textPersonName" />
 
     <CheckBox
         android:id="@+id/checkBox"
@@ -31,9 +35,7 @@
         android:layout_alignStart="@+id/editText"
         android:layout_below="@+id/editText"
         android:layout_marginTop="24dp"
-        android:text="Получать уведомления"
-        android:textColor="@color/white"/>
-
+        android:text="Получать уведомления" />
 
 
 </RelativeLayout>

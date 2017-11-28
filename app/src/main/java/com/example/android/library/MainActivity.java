@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
                         .addToBackStack("myStack")
                         .commit();
                 // TODO: 25.10.2017 replase frame on setting fragment
-                break;
+                return true;
             }
             case R.id.menu_reference:{
                 Log.e("menu", "2");
@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
                         .addToBackStack("myStack")
                         .commit();
                 // TODO: 25.10.2017 replase frame on reference fragment
-                break;
+                return true;
             }
         }
 
